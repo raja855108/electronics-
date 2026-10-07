@@ -1,0 +1,8 @@
+{
+  "name": "Bin Electronics",
+  "description": "Premium electronics and futuristic consumer tech e-commerce store with high-performance audio, smartphones, laptops, smart gear, and real-time inventory management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
