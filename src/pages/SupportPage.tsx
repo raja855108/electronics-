@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Shield, Truck, RotateCcw, Headphones, MessageSquare, HelpCircle, CheckCircle2 } from 'lucide-react';
 import { useToast } from '../context/ToastContext.tsx';
+import { formatRupee } from '../utils/currency.ts';
 
 interface SupportPageProps {
   initialTab?: string;
@@ -171,7 +172,7 @@ export const SupportPage: React.FC<SupportPageProps> = ({ initialTab = 'faq', on
                   {trackingResult.items.map((it: any) => (
                     <div key={it.variationId} className="flex justify-between text-slate-300">
                       <span>{it.productName} ({it.colorName}) ×{it.quantity}</span>
-                      <span className="font-mono">${it.price * it.quantity}</span>
+                      <span className="font-mono">{formatRupee(it.price * it.quantity)}</span>
                     </div>
                   ))}
                 </div>
@@ -220,15 +221,15 @@ export const SupportPage: React.FC<SupportPageProps> = ({ initialTab = 'faq', on
             <div className="space-y-3 pt-2">
               <div className="p-3.5 rounded-xl bg-slate-900 border border-slate-800 flex justify-between">
                 <span>Free Express Shipping Threshold</span>
-                <span className="font-mono text-emerald-400 font-semibold">Orders $150 and above</span>
+                <span className="font-mono text-emerald-400 font-semibold">Orders ₹1,499 and above</span>
               </div>
               <div className="p-3.5 rounded-xl bg-slate-900 border border-slate-800 flex justify-between">
-                <span>Standard Delivery (Under $150)</span>
-                <span className="font-mono text-white">$15 Flat Rate (Air Courier)</span>
+                <span>Standard Delivery (Under ₹1,499)</span>
+                <span className="font-mono text-white">₹99 Flat Rate (Express Courier)</span>
               </div>
               <div className="p-3.5 rounded-xl bg-slate-900 border border-slate-800 flex justify-between">
                 <span>Dispatch Cutoff</span>
-                <span className="text-white">Same-day dispatch before 3:00 PM EST</span>
+                <span className="text-white">Same-day dispatch before 3:00 PM IST</span>
               </div>
             </div>
           </div>

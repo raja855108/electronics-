@@ -4,6 +4,7 @@ import { Product, ProductVariation } from '../types/index.ts';
 import { ProductImage } from './ProductImage.tsx';
 import { useCart } from '../context/CartContext.tsx';
 import { useToast } from '../context/ToastContext.tsx';
+import { formatRupee } from '../utils/currency.ts';
 
 interface ProductCardProps {
   product: Product;
@@ -171,11 +172,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelectProdu
         <div>
           <div className="flex items-baseline gap-2">
             <span className="font-mono font-bold text-base md:text-lg text-white">
-              ${currentPrice}
+              {formatRupee(currentPrice)}
             </span>
             {product.originalPrice > currentPrice && (
               <span className="font-mono text-xs text-slate-500 line-through">
-                ${product.originalPrice}
+                {formatRupee(product.originalPrice)}
               </span>
             )}
           </div>

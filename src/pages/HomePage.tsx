@@ -5,6 +5,7 @@ import { ProductCard } from '../components/ProductCard.tsx';
 import { ProductImage } from '../components/ProductImage.tsx';
 import { useCart } from '../context/CartContext.tsx';
 import { useToast } from '../context/ToastContext.tsx';
+import { formatRupee } from '../utils/currency.ts';
 
 interface HomePageProps {
   products: Product[];
@@ -130,7 +131,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 {/* Top Badge */}
                 <div className="flex items-center justify-between text-xs z-10">
                   <span className="font-mono text-slate-400">Model: Sonic Pro ANC</span>
-                  <span className="text-blue-400 font-mono font-semibold">${heroVariation.price || 349}</span>
+                  <span className="text-blue-400 font-mono font-semibold">{formatRupee(heroVariation.price || 349)}</span>
                 </div>
 
                 {/* Hero Main Graphic with dynamic colorway update */}

@@ -2,6 +2,7 @@ import React from 'react';
 import { CheckCircle2, ArrowRight, Printer, Package, Truck, ShieldCheck, Home } from 'lucide-react';
 import { Order } from '../types/index.ts';
 import { ProductImage } from '../components/ProductImage.tsx';
+import { formatRupee } from '../utils/currency.ts';
 
 interface OrderConfirmationPageProps {
   order: Order;
@@ -174,7 +175,7 @@ export const OrderConfirmationPage: React.FC<OrderConfirmationPageProps> = ({
               </div>
 
               <div className="font-mono font-semibold text-white">
-                ${item.price * item.quantity}
+                {formatRupee(item.price * item.quantity)}
               </div>
             </div>
           ))}
@@ -184,23 +185,23 @@ export const OrderConfirmationPage: React.FC<OrderConfirmationPageProps> = ({
         <div className="pt-3 border-t border-slate-800 space-y-1.5 text-xs">
           <div className="flex justify-between text-slate-400">
             <span>Subtotal</span>
-            <span className="font-mono text-slate-200">${order.subtotal}</span>
+            <span className="font-mono text-slate-200">{formatRupee(order.subtotal)}</span>
           </div>
           {order.discount > 0 && (
             <div className="flex justify-between text-emerald-400">
               <span>Discount</span>
-              <span className="font-mono">-${order.discount}</span>
+              <span className="font-mono">-{formatRupee(order.discount)}</span>
             </div>
           )}
           <div className="flex justify-between text-slate-400">
             <span>Shipping</span>
             <span className="font-mono text-slate-200">
-              {order.shipping === 0 ? 'FREE' : `$${order.shipping}`}
+              {order.shipping === 0 ? 'FREE' : formatRupee(order.shipping)}
             </span>
           </div>
           <div className="pt-2 border-t border-slate-800 flex justify-between text-sm font-bold text-white">
             <span>Total Paid</span>
-            <span className="font-mono text-blue-400 text-base">${order.total}</span>
+            <span className="font-mono text-blue-400 text-base">{formatRupee(order.total)}</span>
           </div>
         </div>
       </div>

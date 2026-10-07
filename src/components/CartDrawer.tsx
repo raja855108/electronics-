@@ -2,6 +2,7 @@ import React from 'react';
 import { X, Trash2, Plus, Minus, ArrowRight, ShieldCheck, ShoppingBag, Sparkles } from 'lucide-react';
 import { useCart } from '../context/CartContext.tsx';
 import { ProductImage } from './ProductImage.tsx';
+import { formatRupee } from '../utils/currency.ts';
 
 interface CartDrawerProps {
   onProceedToCheckout: () => void;
@@ -119,7 +120,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                         />
                         <span className="truncate">{item.colorName}</span>
                         <span aria-hidden="true" className="text-slate-600">·</span>
-                        <span className="font-mono text-slate-300">${item.price}</span>
+                        <span className="font-mono text-slate-300">{formatRupee(item.price)}</span>
                       </div>
                     </div>
 
@@ -148,7 +149,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
                       <div className="flex items-center gap-3">
                         <span className="font-mono text-xs font-semibold text-white">
-                          ${item.price * item.quantity}
+                          {formatRupee(item.price * item.quantity)}
                         </span>
                         <button
                           onClick={() => removeFromCart(item.productId, item.variationId)}
@@ -204,23 +205,23 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               <div className="space-y-1.5 text-xs">
                 <div className="flex justify-between text-slate-400">
                   <span>Subtotal</span>
-                  <span className="font-mono text-slate-200">${subtotal}</span>
+                  <span className="font-mono text-slate-200">{formatRupee(subtotal)}</span>
                 </div>
                 {discount > 0 && (
                   <div className="flex justify-between text-emerald-400">
                     <span>Discount</span>
-                    <span className="font-mono">-${discount}</span>
+                    <span className="font-mono">-{formatRupee(discount)}</span>
                   </div>
                 )}
                 <div className="flex justify-between text-slate-400">
                   <span>Estimated Shipping</span>
                   <span className="font-mono text-slate-200">
-                    {shipping === 0 ? 'FREE' : `$${shipping}`}
+                    {shipping === 0 ? 'FREE' : formatRupee(shipping)}
                   </span>
                 </div>
                 <div className="pt-2 border-t border-slate-800 flex justify-between text-sm font-semibold text-white">
                   <span>Total</span>
-                  <span className="font-mono text-base text-blue-400">${total}</span>
+                  <span className="font-mono text-base text-blue-400">{formatRupee(total)}</span>
                 </div>
               </div>
 

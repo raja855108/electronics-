@@ -5,6 +5,7 @@ import { useAdminAuth } from '../../context/AdminAuthContext.tsx';
 import { useToast } from '../../context/ToastContext.tsx';
 import { ProductImage } from '../../components/ProductImage.tsx';
 import { ImageUploadField } from '../../components/admin/ImageUploadField.tsx';
+import { formatRupee } from '../../utils/currency.ts';
 
 interface AdminProductsPageProps {
   categories: Category[];
@@ -410,7 +411,7 @@ export const AdminProductsPage: React.FC<AdminProductsPageProps> = ({ categories
                     <td className="py-3 px-4 text-slate-300">{product.category}</td>
 
                     <td className="py-3 px-4 font-mono font-bold text-white">
-                      ${product.price}
+                      {formatRupee(product.price)}
                       {product.discount > 0 && (
                         <span className="text-[11px] text-blue-400 block font-normal">
                           -{product.discount}%
@@ -577,7 +578,7 @@ export const AdminProductsPage: React.FC<AdminProductsPageProps> = ({ categories
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-slate-300 font-medium">Retail Price ($) *</label>
+                    <label className="text-slate-300 font-medium">Retail Price (₹) *</label>
                     <input
                       type="number"
                       min="1"
@@ -589,7 +590,7 @@ export const AdminProductsPage: React.FC<AdminProductsPageProps> = ({ categories
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-slate-300 font-medium">Original / Strikethrough Price ($)</label>
+                    <label className="text-slate-300 font-medium">Original / Strikethrough Price (₹)</label>
                     <input
                       type="number"
                       min="1"
@@ -781,7 +782,7 @@ export const AdminProductsPage: React.FC<AdminProductsPageProps> = ({ categories
                         </div>
 
                         <div className="space-y-1">
-                          <label className="text-[11px] text-slate-400">Variation Price ($)</label>
+                          <label className="text-[11px] text-slate-400">Variation Price (₹)</label>
                           <input
                             type="number"
                             min="1"

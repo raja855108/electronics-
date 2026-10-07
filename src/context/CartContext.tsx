@@ -137,10 +137,10 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
   }, [cart]);
 
-  // Free shipping over $150, else $15 flat rate. Free if empty.
+  // Free shipping over ₹1,499, else ₹99 flat rate. Free if empty.
   const shipping = useMemo(() => {
     if (cart.length === 0) return 0;
-    return subtotal >= 150 ? 0 : 15;
+    return subtotal >= 1499 ? 0 : 99;
   }, [subtotal, cart.length]);
 
   const discount = useMemo(() => {

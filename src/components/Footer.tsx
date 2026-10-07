@@ -18,7 +18,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </div>
               <div>
                 <h4 className="font-semibold text-slate-200 text-sm">Express Global Delivery</h4>
-                <p className="text-xs text-slate-500 mt-0.5">Complimentary express shipping on all orders over $150.</p>
+                <p className="text-xs text-slate-500 mt-0.5">Complimentary express shipping on all orders over ₹1,499.</p>
               </div>
             </div>
 

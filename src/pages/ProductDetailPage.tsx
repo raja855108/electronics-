@@ -20,6 +20,7 @@ import { ProductImage } from '../components/ProductImage.tsx';
 import { ProductCard } from '../components/ProductCard.tsx';
 import { useCart } from '../context/CartContext.tsx';
 import { useToast } from '../context/ToastContext.tsx';
+import { formatRupee } from '../utils/currency.ts';
 
 interface ProductDetailPageProps {
   product: Product;
@@ -317,11 +318,11 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
           <div className="p-4 rounded-2xl bg-[#0b0f17] border border-slate-800/80 flex items-baseline justify-between">
             <div className="flex items-baseline gap-3">
               <span className="font-mono font-extrabold text-3xl text-white">
-                ${activePrice}
+                {formatRupee(activePrice)}
               </span>
               {product.originalPrice > activePrice && (
                 <span className="font-mono text-base text-slate-500 line-through">
-                  ${product.originalPrice}
+                  {formatRupee(product.originalPrice)}
                 </span>
               )}
             </div>

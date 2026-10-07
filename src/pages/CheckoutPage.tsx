@@ -4,6 +4,7 @@ import { useCart } from '../context/CartContext.tsx';
 import { useToast } from '../context/ToastContext.tsx';
 import { CustomerAddress, Order } from '../types/index.ts';
 import { ProductImage } from '../components/ProductImage.tsx';
+import { formatRupee } from '../utils/currency.ts';
 
 interface CheckoutPageProps {
   onOrderCompleted: (order: Order) => void;
@@ -452,7 +453,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
                   </div>
                 </div>
                 <div className="font-mono font-semibold text-white">
-                  ${item.price * item.quantity}
+                  {formatRupee(item.price * item.quantity)}
                 </div>
               </div>
             ))}
@@ -462,23 +463,23 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
           <div className="pt-3 border-t border-slate-800 space-y-2 text-xs">
             <div className="flex justify-between text-slate-400">
               <span>Subtotal</span>
-              <span className="font-mono text-slate-200">${subtotal}</span>
+              <span className="font-mono text-slate-200">{formatRupee(subtotal)}</span>
             </div>
             {discount > 0 && (
               <div className="flex justify-between text-emerald-400">
                 <span>Discount</span>
-                <span className="font-mono">-${discount}</span>
+                <span className="font-mono">-{formatRupee(discount)}</span>
               </div>
             )}
             <div className="flex justify-between text-slate-400">
               <span>Shipping</span>
               <span className="font-mono text-slate-200">
-                {shipping === 0 ? 'FREE' : `$${shipping}`}
+                {shipping === 0 ? 'FREE' : formatRupee(shipping)}
               </span>
             </div>
             <div className="pt-2 border-t border-slate-800 flex justify-between text-base font-bold text-white">
               <span>Grand Total</span>
-              <span className="font-mono text-xl text-blue-400">${total}</span>
+              <span className="font-mono text-xl text-blue-400">{formatRupee(total)}</span>
             </div>
           </div>
 
@@ -493,7 +494,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
                 <span>Securing Hardware & Placing Order...</span>
               ) : (
                 <>
-                  <span>Place Order (${total})</span>
+                  <span>Place Order ({formatRupee(total)})</span>
                   <ArrowRight className="w-4 h-4" />
                 </>
               )}

@@ -4,6 +4,7 @@ import { Order, OrderStatus } from '../../types/index.ts';
 import { useAdminAuth } from '../../context/AdminAuthContext.tsx';
 import { useToast } from '../../context/ToastContext.tsx';
 import { ProductImage } from '../../components/ProductImage.tsx';
+import { formatRupee } from '../../utils/currency.ts';
 
 interface AdminOrdersPageProps {
   initialSelectedOrder?: Order | null;
@@ -202,7 +203,7 @@ export const AdminOrdersPage: React.FC<AdminOrdersPageProps> = ({
                     </td>
 
                     <td className="py-3 px-4 font-mono font-bold text-white text-sm">
-                      ${order.total}
+                      {formatRupee(order.total)}
                     </td>
 
                     <td className="py-3 px-4">
@@ -355,7 +356,7 @@ export const AdminOrdersPage: React.FC<AdminOrdersPageProps> = ({
                     </div>
 
                     <div className="font-mono font-bold text-white">
-                      ${it.price * it.quantity}
+                      {formatRupee(it.price * it.quantity)}
                     </div>
                   </div>
                 ))}
@@ -368,7 +369,7 @@ export const AdminOrdersPage: React.FC<AdminOrdersPageProps> = ({
                 Payment: <strong className="text-white uppercase">{inspectOrder.paymentMethod}</strong> (Status: <span className="text-emerald-400">{inspectOrder.paymentStatus}</span>)
               </div>
               <div className="font-display font-bold text-lg text-blue-400">
-                Total: ${inspectOrder.total}
+                Total: {formatRupee(inspectOrder.total)}
               </div>
             </div>
 

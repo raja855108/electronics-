@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ShoppingBag, Trash2, Plus, Minus, ArrowRight, ShieldCheck, Sparkles, ArrowLeft } from 'lucide-react';
 import { useCart } from '../context/CartContext.tsx';
 import { ProductImage } from '../components/ProductImage.tsx';
+import { formatRupee } from '../utils/currency.ts';
 
 interface CartPageProps {
   onContinueShopping: () => void;
@@ -36,7 +37,7 @@ export const CartPage: React.FC<CartPageProps> = ({
     }
   };
 
-  const freeShippingThreshold = 150;
+  const freeShippingThreshold = 1499;
   const distanceToFreeShipping = Math.max(0, freeShippingThreshold - subtotal);
   const freeShippingProgress = Math.min(100, (subtotal / freeShippingThreshold) * 100);
 
@@ -85,7 +86,7 @@ export const CartPage: React.FC<CartPageProps> = ({
           <div className="flex justify-between text-slate-300">
             <span>Free Shipping:</span>
             <span className="font-mono text-blue-400 font-semibold">
-              {distanceToFreeShipping === 0 ? 'Unlocked!' : `$${distanceToFreeShipping} away`}
+              {distanceToFreeShipping === 0 ? 'Unlocked!' : `${formatRupee(distanceToFreeShipping)} away`}
             </span>
           </div>
           <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
@@ -130,7 +131,7 @@ export const CartPage: React.FC<CartPageProps> = ({
                     />
                     <span>Finish: <strong className="text-slate-200">{item.colorName}</strong></span>
                     <span aria-hidden="true" className="text-slate-600">·</span>
-                    <span className="font-mono">${item.price} each</span>
+                    <span className="font-mono">{formatRupee(item.price)} each</span>
                   </div>
                   <div className="text-[11px] text-slate-500">
                     Stock available: {item.maxStock} units
@@ -163,7 +164,7 @@ export const CartPage: React.FC<CartPageProps> = ({
 
                 <div className="text-right">
                   <span className="font-mono font-bold text-base text-white">
-                    ${item.price * item.quantity}
+                    {formatRupee(item.price * item.quantity)}
                   </span>
                 </div>
 
@@ -223,23 +224,23 @@ export const CartPage: React.FC<CartPageProps> = ({
           <div className="space-y-2.5 text-xs">
             <div className="flex justify-between text-slate-400">
               <span>Subtotal</span>
-              <span className="font-mono text-slate-200">${subtotal}</span>
+              <span className="font-mono text-slate-200">{formatRupee(subtotal)}</span>
             </div>
             {discount > 0 && (
               <div className="flex justify-between text-emerald-400 font-medium">
                 <span>Discount Applied</span>
-                <span className="font-mono">-${discount}</span>
+                <span className="font-mono">-{formatRupee(discount)}</span>
               </div>
             )}
             <div className="flex justify-between text-slate-400">
               <span>Insured Express Shipping</span>
               <span className="font-mono text-slate-200">
-                {shipping === 0 ? 'FREE' : `$${shipping}`}
+                {shipping === 0 ? 'FREE' : formatRupee(shipping)}
               </span>
             </div>
             <div className="pt-3 border-t border-slate-800 flex justify-between text-base font-bold text-white">
               <span>Estimated Total</span>
-              <span className="font-mono text-xl text-blue-400">${total}</span>
+              <span className="font-mono text-xl text-blue-400">{formatRupee(total)}</span>
             </div>
           </div>
 

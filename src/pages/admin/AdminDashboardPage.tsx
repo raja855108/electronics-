@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { DollarSign, ShoppingBag, Package, AlertTriangle, ArrowRight, RefreshCw, Eye, CheckCircle2 } from 'lucide-react';
+import { IndianRupee, ShoppingBag, Package, AlertTriangle, ArrowRight, RefreshCw, Eye, CheckCircle2 } from 'lucide-react';
 import { useAdminAuth } from '../../context/AdminAuthContext.tsx';
 import { AdminMetrics, Order } from '../../types/index.ts';
 import { useToast } from '../../context/ToastContext.tsx';
+import { formatRupee } from '../../utils/currency.ts';
 
 interface AdminDashboardPageProps {
   onNavigateTab: (tab: 'products' | 'orders') => void;
@@ -110,11 +111,11 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
           <div className="flex items-center justify-between">
             <span className="text-xs text-slate-400 font-medium">Total Gross Sales</span>
             <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-              <DollarSign className="w-4 h-4" />
+              <IndianRupee className="w-4 h-4" />
             </div>
           </div>
           <div className="font-display font-extrabold text-2xl sm:text-3xl text-white">
-            ${metrics?.totalSales.toLocaleString() || '0'}
+            {formatRupee(metrics?.totalSales || 0)}
           </div>
           <div className="text-[11px] text-emerald-400 flex items-center gap-1">
             <CheckCircle2 className="w-3.5 h-3.5" />
@@ -220,7 +221,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                         ))}
                       </td>
                       <td className="py-3 font-mono font-bold text-white">
-                        ${order.total}
+                        {formatRupee(order.total)}
                       </td>
                       <td className="py-3">
                         <select

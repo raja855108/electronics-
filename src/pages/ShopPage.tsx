@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { Search, Filter, ArrowUpDown, X, SlidersHorizontal, Check } from 'lucide-react';
 import { Product, Category, ProductVariation } from '../types/index.ts';
 import { ProductCard } from '../components/ProductCard.tsx';
+import { formatRupee } from '../utils/currency.ts';
 
 interface ShopPageProps {
   products: Product[];
@@ -221,7 +222,7 @@ export const ShopPage: React.FC<ShopPageProps> = ({
               <span className="font-semibold text-slate-400 uppercase tracking-wider">
                 Max Price
               </span>
-              <span className="font-mono font-medium text-white">${priceMax}</span>
+              <span className="font-mono font-medium text-white">{formatRupee(priceMax)}</span>
             </div>
             <input
               type="range"
@@ -233,8 +234,8 @@ export const ShopPage: React.FC<ShopPageProps> = ({
               className="w-full accent-blue-500 bg-slate-800 h-1.5 rounded-lg cursor-pointer"
             />
             <div className="flex justify-between text-[10px] text-slate-500 font-mono">
-              <span>$50</span>
-              <span>$3,000</span>
+              <span>{formatRupee(50)}</span>
+              <span>{formatRupee(3000)}</span>
             </div>
           </div>
 
