@@ -255,18 +255,28 @@ app.get('/api/health', (_req: Request, res: Response) => {
   res.json({ status: 'ok', brand: 'Bin Electronics', timestamp: new Date().toISOString() });
 });
 
+// 404 fallback for API requests
+app.use('/api', (_req: Request, res: Response) => {
+  res.status(404).json({ error: 'API endpoint not found' });
+});
+
 // ---------------- VITE MIDDLEWARE / STATIC FILES ---------------- //
 async function startServer() {
-  if (!isProduction) {
+  const distPath = path.resolve(__dirname, 'dist');
+  const distExists = fs.existsSync(path.join(distPath, 'index.html'));
+
+  if (!isProduction && !distExists) {
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: 'spa',
     });
     app.use(vite.middlewares);
   } else {
-    const distPath = path.resolve(__dirname, 'dist');
     app.use(express.static(distPath));
-    app.get('*', (_req: Request, res: Response) => {
+    app.get('*', (req: Request, res: Response, next: NextFunction) => {
+      if (req.path.startsWith('/api') || req.path.startsWith('/uploads')) {
+        return next();
+      }
       res.sendFile(path.resolve(distPath, 'index.html'));
     });
   }

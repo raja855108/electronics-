@@ -1,0 +1,487 @@
+import { Product, Category } from '../types/index.ts';
+
+export const SEED_CATEGORIES: Category[] = [
+  { id: 'smartphones', name: 'Smartphones', slug: 'smartphones', description: 'Next-generation flagship smartphones with ultra displays', itemCount: 1 },
+  { id: 'laptops', name: 'Laptops', slug: 'laptops', description: 'Ultra-thin workstation performance notebooks', itemCount: 1 },
+  { id: 'tablets', name: 'Tablets', slug: 'tablets', description: 'Ultra-responsive OLED creative tablets', itemCount: 1 },
+  { id: 'audio', name: 'Audio', slug: 'audio', description: 'Audiophile studio sound and noise cancelling acoustics', itemCount: 1 },
+  { id: 'smart-watches', name: 'Smart Watches', slug: 'smart-watches', description: 'Aerospace titanium health and biometric wearables', itemCount: 1 },
+  { id: 'accessories', name: 'Accessories', slug: 'accessories', description: 'High-speed wireless power and magnetic docks', itemCount: 1 },
+  { id: 'cameras', name: 'Cameras', slug: 'cameras', description: '4K/8K cinema sensors and gimbal-stabilized optics', itemCount: 1 },
+  { id: 'gaming', name: 'Gaming', slug: 'gaming', description: 'Low latency haptic controllers and peripherals', itemCount: 1 },
+];
+
+export const SEED_PRODUCTS: Product[] = [
+  {
+    id: 'bin-sonic-pro',
+    name: 'Bin Sonic Pro ANC Wireless Headphones',
+    slug: 'bin-sonic-pro-anc',
+    tagline: 'Pure Acoustic Immersion with 45dB Active Noise Cancellation',
+    description: 'Engineered for audio purists and mobile creators, the Bin Sonic Pro delivers studio-grade resolution with custom 40mm Beryllium drivers, ultra-low latency wireless streaming, and intuitive capacitive touch controls. Precision machined aluminum hinges provide all-day ergonomic comfort.',
+    category: 'Audio',
+    price: 349,
+    originalPrice: 399,
+    discount: 13,
+    rating: 4.9,
+    reviewsCount: 184,
+    isFeatured: true,
+    isNewArrival: true,
+    isBestSeller: true,
+    isPublished: true,
+    mainImage: '',
+    galleryImages: [],
+    specifications: {
+      'Acoustic Driver': '40mm Custom Beryllium Diaphragm',
+      'Noise Cancellation': 'Hybrid Active ANC (-45dB attenuation)',
+      'Battery Life': 'Up to 60 Hours (ANC On: 48h)',
+      'Connectivity': 'Bluetooth 5.4, Multipoint, 3.5mm Lossless',
+      'Codecs': 'LDAC, aptX Adaptive, AAC, SBC',
+      'Weight': '255g Lightweight Ergonomic Chassis',
+      'Warranty': '2-Year International Bin Care'
+    },
+    stock: 41,
+    variations: [
+      {
+        id: 'var-sonic-black',
+        productId: 'bin-sonic-pro',
+        colorName: 'Midnight Black',
+        colorCode: '#0f172a',
+        mainImage: '',
+        galleryImages: [],
+        stock: 18,
+        price: 349,
+        sku: 'BIN-AUD-01-BLK'
+      },
+      {
+        id: 'var-sonic-white',
+        productId: 'bin-sonic-pro',
+        colorName: 'Arctic White',
+        colorCode: '#f8fafc',
+        mainImage: '',
+        galleryImages: [],
+        stock: 9,
+        price: 349,
+        sku: 'BIN-AUD-01-WHT'
+      },
+      {
+        id: 'var-sonic-blue',
+        productId: 'bin-sonic-pro',
+        colorName: 'Electric Blue',
+        colorCode: '#2563eb',
+        mainImage: '',
+        galleryImages: [],
+        stock: 14,
+        price: 349,
+        sku: 'BIN-AUD-01-BLU'
+      }
+    ],
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    id: 'bin-quantum-16-ultra',
+    name: 'Bin Quantum Phone 16 Ultra',
+    slug: 'bin-quantum-phone-16-ultra',
+    tagline: 'Titanium Architecture. 200MP Periscope Telephoto. AI Neural Core.',
+    description: 'The pinnacle of smartphone engineering. Featuring a micro-sandblasted Grade 5 titanium chassis, 6.8-inch Dynamic AMOLED 2X display with 1-120Hz LTPO variable refresh rate, and 5400mAh dual-cell silicon carbon battery with 100W HyperCharge.',
+    category: 'Smartphones',
+    price: 1199,
+    originalPrice: 1299,
+    discount: 8,
+    rating: 4.95,
+    reviewsCount: 312,
+    isFeatured: true,
+    isNewArrival: true,
+    isBestSeller: true,
+    isPublished: true,
+    mainImage: '',
+    galleryImages: [],
+    specifications: {
+      'Display': '6.8" Quad HD+ LTPO 1-120Hz AMOLED (3000 nits peak)',
+      'Processor': 'Bin Quantum NPU Octa-Core 3nm',
+      'Camera Array': '200MP Main + 50MP Ultra-Wide + 50MP 5x Periscope',
+      'RAM / Storage': '16GB LPDDR5X / 512GB UFS 4.0',
+      'Battery': '5400mAh Silicon-Carbon, 100W Wired, 50W Wireless',
+      'Durability': 'IP68 Submersion Rated, Armor Glass Victus 3',
+      'OS': 'BinOS 4.0 Neural Core Edition'
+    },
+    stock: 39,
+    variations: [
+      {
+        id: 'var-q16-black',
+        productId: 'bin-quantum-16-ultra',
+        colorName: 'Obsidian Black',
+        colorCode: '#090d16',
+        mainImage: '',
+        galleryImages: [],
+        stock: 22,
+        price: 1199,
+        sku: 'BIN-PHN-16-OBS'
+      },
+      {
+        id: 'var-q16-blue',
+        productId: 'bin-quantum-16-ultra',
+        colorName: 'Titanium Blue',
+        colorCode: '#1e40af',
+        mainImage: '',
+        galleryImages: [],
+        stock: 12,
+        price: 1199,
+        sku: 'BIN-PHN-16-BLU'
+      },
+      {
+        id: 'var-q16-silver',
+        productId: 'bin-quantum-16-ultra',
+        colorName: 'Starlight Silver',
+        colorCode: '#e2e8f0',
+        mainImage: '',
+        galleryImages: [],
+        stock: 5,
+        price: 1199,
+        sku: 'BIN-PHN-16-SLV'
+      }
+    ],
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    id: 'bin-apex-16-pro',
+    name: 'Bin Apex 16 Pro Workstation Laptop',
+    slug: 'bin-apex-16-pro',
+    tagline: 'Uncompromising M-Architecture Power for Creators and Engineers',
+    description: 'Designed for demanding compiling, 3D spatial rendering, and computational workflows. Featuring a 16.2-inch Mini-LED 3.5K Liquid Retina display, vapor chamber cryo-cooling, and 22-hour battery life.',
+    category: 'Laptops',
+    price: 2299,
+    originalPrice: 2499,
+    discount: 8,
+    rating: 4.88,
+    reviewsCount: 96,
+    isFeatured: true,
+    isNewArrival: false,
+    isBestSeller: true,
+    isPublished: true,
+    mainImage: '',
+    galleryImages: [],
+    specifications: {
+      'Display': '16.2" Mini-LED 3456x2234 120Hz ProMotion (1600 nits)',
+      'Processor': 'Bin Apex M4 16-Core CPU / 40-Core GPU',
+      'Memory': '64GB Unified Memory (400GB/s bandwidth)',
+      'Storage': '1TB NVMe PCIe 5.0 SSD (7200MB/s)',
+      'Ports': '3x Thunderbolt 5, HDMI 2.1, SDXC Slot, MagSafe 3',
+      'Battery': '100Wh Battery (22 Hours video playback)',
+      'Weight': '2.14 kg Anodized Aerospace Aluminum'
+    },
+    stock: 23,
+    variations: [
+      {
+        id: 'var-apex-spacegray',
+        productId: 'bin-apex-16-pro',
+        colorName: 'Space Gray',
+        colorCode: '#334155',
+        mainImage: '',
+        galleryImages: [],
+        stock: 15,
+        price: 2299,
+        sku: 'BIN-LAP-16-SGY'
+      },
+      {
+        id: 'var-apex-black',
+        productId: 'bin-apex-16-pro',
+        colorName: 'Stealth Black',
+        colorCode: '#0f172a',
+        mainImage: '',
+        galleryImages: [],
+        stock: 8,
+        price: 2349,
+        sku: 'BIN-LAP-16-BLK'
+      }
+    ],
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    id: 'bin-chrono-pulse-ultra',
+    name: 'Bin Chrono Pulse Watch Ultra',
+    slug: 'bin-chrono-pulse-watch-ultra',
+    tagline: 'Aerospace Grade Titanium. Dual-Frequency GPS. 100m Dive Rated.',
+    description: 'The premier tactical smartwatch for extreme athletes and urban explorers. Multi-sensor biometric suite tracking ECG, HRV, SpO2, core body temperature, and continuous sleep stages in real-time.',
+    category: 'Smart Watches',
+    price: 449,
+    originalPrice: 499,
+    discount: 10,
+    rating: 4.85,
+    reviewsCount: 142,
+    isFeatured: true,
+    isNewArrival: true,
+    isBestSeller: false,
+    isPublished: true,
+    mainImage: '',
+    galleryImages: [],
+    specifications: {
+      'Case Material': '49mm Grade 5 Titanium with Sapphire Crystal Lens',
+      'Display': '1.96" Always-On LTPO OLED 3000 nits',
+      'Battery Life': 'Up to 72 Hours in Normal Mode, 120 Hours Low Power',
+      'Water Resistance': '100m Water Resistance / EN13319 Dive Certified',
+      'Sensors': 'Optical Heart, Electrical ECG, Temperature, Depth Sensor',
+      'Connectivity': 'Cellular LTE, Dual-Band L1/L5 GPS, NFC BinPay'
+    },
+    stock: 51,
+    variations: [
+      {
+        id: 'var-chrono-black',
+        productId: 'bin-chrono-pulse-ultra',
+        colorName: 'Onyx Black',
+        colorCode: '#0f172a',
+        mainImage: '',
+        galleryImages: [],
+        stock: 25,
+        price: 449,
+        sku: 'BIN-WTC-01-ONX'
+      },
+      {
+        id: 'var-chrono-blue',
+        productId: 'bin-chrono-pulse-ultra',
+        colorName: 'Cobalt Electric',
+        colorCode: '#3b82f6',
+        mainImage: '',
+        galleryImages: [],
+        stock: 19,
+        price: 449,
+        sku: 'BIN-WTC-01-CBL'
+      },
+      {
+        id: 'var-chrono-orange',
+        productId: 'bin-chrono-pulse-ultra',
+        colorName: 'Alpine Orange',
+        colorCode: '#ea580c',
+        mainImage: '',
+        galleryImages: [],
+        stock: 7,
+        price: 459,
+        sku: 'BIN-WTC-01-ORG'
+      }
+    ],
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    id: 'bin-slate-pro-13',
+    name: 'Bin Slate Pro 13 OLED Tablet',
+    slug: 'bin-slate-pro-13-tablet',
+    tagline: 'Tandem OLED Precision with 120Hz Stylus Pen Support',
+    description: 'Transform your digital canvas with 5.1mm ultra-thin industrial precision. Powered by dual Tandem OLED layers offering unmatched color contrast and true deep blacks.',
+    category: 'Tablets',
+    price: 899,
+    originalPrice: 999,
+    discount: 10,
+    rating: 4.8,
+    reviewsCount: 78,
+    isFeatured: false,
+    isNewArrival: false,
+    isBestSeller: false,
+    isPublished: true,
+    mainImage: '',
+    galleryImages: [],
+    specifications: {
+      'Display': '13.0" Tandem OLED 2752x2064 120Hz ProMotion',
+      'Processor': 'Bin OctaCore M3 Compute Core',
+      'Thickness': '5.1mm Featherweight Profile (579g)',
+      'Audio': '4-Speaker Spatial Acoustic Array',
+      'Stylus': 'Bin Pen Gen 3 Support with Haptic Feedback'
+    },
+    stock: 25,
+    variations: [
+      {
+        id: 'var-slate-gray',
+        productId: 'bin-slate-pro-13',
+        colorName: 'Cosmic Gray',
+        colorCode: '#475569',
+        mainImage: '',
+        galleryImages: [],
+        stock: 14,
+        price: 899,
+        sku: 'BIN-TAB-13-GRY'
+      },
+      {
+        id: 'var-slate-silver',
+        productId: 'bin-slate-pro-13',
+        colorName: 'Frost Silver',
+        colorCode: '#f1f5f9',
+        mainImage: '',
+        galleryImages: [],
+        stock: 11,
+        price: 899,
+        sku: 'BIN-TAB-13-SLV'
+      }
+    ],
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    id: 'bin-cybervision-4k',
+    name: 'Bin CyberVision 4K Cinema Camera',
+    slug: 'bin-cybervision-4k-camera',
+    tagline: '14-Stop Dynamic Range. 4K 120FPS ProRes RAW Capture.',
+    description: 'Compact cinema powerhouse equipped with a 1-inch stacked CMOS sensor, 6-axis optical image stabilization, and built-in active cooling for continuous high-framerate shooting.',
+    category: 'Cameras',
+    price: 1499,
+    originalPrice: 1699,
+    discount: 12,
+    rating: 4.9,
+    reviewsCount: 64,
+    isFeatured: true,
+    isNewArrival: true,
+    isBestSeller: false,
+    isPublished: true,
+    mainImage: '',
+    galleryImages: [],
+    specifications: {
+      'Sensor': '1.0-inch Stacked Exmor BSI CMOS Sensor',
+      'Recording': '4K 120fps 10-Bit 4:2:2 ProRes / CinemaDNG',
+      'Stabilization': 'Active 6-Axis Hybrid Gimbal Stabilization',
+      'Lens Mount': 'Universal E-Mount Micro Precision'
+    },
+    stock: 10,
+    variations: [
+      {
+        id: 'var-cam-black',
+        productId: 'bin-cybervision-4k',
+        colorName: 'Stealth Black',
+        colorCode: '#0f172a',
+        mainImage: '',
+        galleryImages: [],
+        stock: 6,
+        price: 1499,
+        sku: 'BIN-CAM-4K-BLK'
+      },
+      {
+        id: 'var-cam-gray',
+        productId: 'bin-cybervision-4k',
+        colorName: 'Graphite Gray',
+        colorCode: '#374151',
+        mainImage: '',
+        galleryImages: [],
+        stock: 4,
+        price: 1499,
+        sku: 'BIN-CAM-4K-GRY'
+      }
+    ],
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    id: 'bin-neocontroller-pad',
+    name: 'Bin NeoController Pro Wireless Pad',
+    slug: 'bin-neocontroller-pro-gamepad',
+    tagline: 'Hall Effect Electromagnetic Joysticks. Sub-1ms Latency.',
+    description: 'Zero drift electromagnetic Hall effect analog sticks and magnetic micro-switch face buttons. Featuring dual linear rumble motors and swappable rear ergonomic paddles.',
+    category: 'Gaming',
+    price: 89,
+    originalPrice: 119,
+    discount: 25,
+    rating: 4.87,
+    reviewsCount: 228,
+    isFeatured: false,
+    isNewArrival: false,
+    isBestSeller: true,
+    isPublished: true,
+    mainImage: '',
+    galleryImages: [],
+    specifications: {
+      'Sticks': 'Hall-Effect Electromagnetic Non-Contact Sensing',
+      'Polling Rate': '1000Hz (1ms response time over 2.4GHz wireless)',
+      'Trigger Stops': 'Dual Hair-Trigger Mechanical Adjusters',
+      'Battery': '1200mAh Li-Po (Up to 30 Hours Gameplay)'
+    },
+    stock: 71,
+    variations: [
+      {
+        id: 'var-neo-black',
+        productId: 'bin-neocontroller-pad',
+        colorName: 'Cyber Black',
+        colorCode: '#0f172a',
+        mainImage: '',
+        galleryImages: [],
+        stock: 35,
+        price: 89,
+        sku: 'BIN-GAM-01-BLK'
+      },
+      {
+        id: 'var-neo-violet',
+        productId: 'bin-neocontroller-pad',
+        colorName: 'Neon Violet',
+        colorCode: '#8b5cf6',
+        mainImage: '',
+        galleryImages: [],
+        stock: 20,
+        price: 89,
+        sku: 'BIN-GAM-01-VIO'
+      },
+      {
+        id: 'var-neo-blue',
+        productId: 'bin-neocontroller-pad',
+        colorName: 'Glacier Blue',
+        colorCode: '#38bdf8',
+        mainImage: '',
+        galleryImages: [],
+        stock: 16,
+        price: 89,
+        sku: 'BIN-GAM-01-BLU'
+      }
+    ],
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    id: 'bin-magcharge-duo',
+    name: 'Bin MagCharge Duo 30W Fast Charger',
+    slug: 'bin-magcharge-duo-dock',
+    tagline: 'Dual Magnetic Fast Induction Dock with CryoAir Thermal Cooling',
+    description: 'Simultaneously charge your Bin Quantum smartphone and wireless headphones at maximum Qi2 speeds. Built with an internal silent cooling fan to maintain peak battery health.',
+    category: 'Accessories',
+    price: 59,
+    originalPrice: 79,
+    discount: 25,
+    rating: 4.75,
+    reviewsCount: 110,
+    isFeatured: false,
+    isNewArrival: false,
+    isBestSeller: false,
+    isPublished: true,
+    mainImage: '',
+    galleryImages: [],
+    specifications: {
+      'Output': '30W Max Dual Fast Induction Qi2 Standard',
+      'Cooling': 'Silent Magnetic Centrifugal Heat Dissipation',
+      'Input': 'USB-C PD 3.1 65W GaN',
+      'Cable Included': '1.5m Braided Armored USB-C Cable'
+    },
+    stock: 70,
+    variations: [
+      {
+        id: 'var-mag-black',
+        productId: 'bin-magcharge-duo',
+        colorName: 'Midnight Black',
+        colorCode: '#0f172a',
+        mainImage: '',
+        galleryImages: [],
+        stock: 40,
+        price: 59,
+        sku: 'BIN-ACC-01-BLK'
+      },
+      {
+        id: 'var-mag-white',
+        productId: 'bin-magcharge-duo',
+        colorName: 'Arctic White',
+        colorCode: '#f8fafc',
+        mainImage: '',
+        galleryImages: [],
+        stock: 30,
+        price: 59,
+        sku: 'BIN-ACC-01-WHT'
+      }
+    ],
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  }
+];

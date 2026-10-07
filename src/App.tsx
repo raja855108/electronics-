@@ -6,6 +6,7 @@ import { Navbar } from './components/Navbar.tsx';
 import { Footer } from './components/Footer.tsx';
 import { CartDrawer } from './components/CartDrawer.tsx';
 import { Product, Category, ProductVariation, Order } from './types/index.ts';
+import { SEED_PRODUCTS, SEED_CATEGORIES } from './utils/seedData.ts';
 
 // Pages
 import { HomePage } from './pages/HomePage.tsx';
@@ -47,25 +48,61 @@ function MainApp() {
   // Search input query
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Initial data fetch
+  // Initial data fetch with offline / static host resilience
   const fetchData = async () => {
     try {
       setLoading(true);
       const [prodRes, catRes] = await Promise.all([
-        fetch('/api/products'),
-        fetch('/api/categories')
+        fetch('/api/products').catch(() => null),
+        fetch('/api/categories').catch(() => null)
       ]);
 
-      if (prodRes.ok) {
-        const prodData = await prodRes.json();
-        setProducts(prodData);
+      let loadedProducts: Product[] = [];
+      let loadedCategories: Category[] = [];
+
+      if (prodRes && prodRes.ok) {
+        try {
+          const prodData = await prodRes.json();
+          if (Array.isArray(prodData) && prodData.length > 0) {
+            loadedProducts = prodData;
+          }
+        } catch {}
       }
-      if (catRes.ok) {
-        const catData = await catRes.json();
-        setCategories(catData);
+
+      if (catRes && catRes.ok) {
+        try {
+          const catData = await catRes.json();
+          if (Array.isArray(catData) && catData.length > 0) {
+            loadedCategories = catData;
+          }
+        } catch {}
       }
+
+      // If backend is unreachable (e.g. GitHub Pages static host), use offline storage / seed
+      if (loadedProducts.length === 0) {
+        try {
+          const cached = localStorage.getItem('bin_offline_products');
+          loadedProducts = cached ? JSON.parse(cached) : SEED_PRODUCTS;
+        } catch {
+          loadedProducts = SEED_PRODUCTS;
+        }
+      }
+
+      if (loadedCategories.length === 0) {
+        try {
+          const cached = localStorage.getItem('bin_offline_categories');
+          loadedCategories = cached ? JSON.parse(cached) : SEED_CATEGORIES;
+        } catch {
+          loadedCategories = SEED_CATEGORIES;
+        }
+      }
+
+      setProducts(loadedProducts);
+      setCategories(loadedCategories);
     } catch (err) {
-      console.error('Failed to load initial catalog data:', err);
+      console.warn('Backend unavailable, using bundled hardware catalog:', err);
+      setProducts(SEED_PRODUCTS);
+      setCategories(SEED_CATEGORIES);
     } finally {
       setLoading(false);
     }
